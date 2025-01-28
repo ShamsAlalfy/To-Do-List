@@ -12,8 +12,7 @@ void main() {
     choice = int.parse(input!);
     switch (choice) {
       case 1:
-        Category category = Category();
-        AddCategory(categories, category);
+        AddCategory(categories);
         break;
       case 2:
         EditCategory(categories);
@@ -25,8 +24,7 @@ void main() {
         EditTask(categories);
         break;
       case 5:
-        Task task = Task();
-        MarkAsfinished(categories, task);
+        MarkAsfinished(categories);
         break;
       case 6:
         RemoveTask(categories);
@@ -65,9 +63,10 @@ void ShowMenu() {
   print("\t\t\t\t\t\t\t\t -------------------------------------------------------------------");
 }
 
-void AddCategory(List<Category> categories, Category category) {
+void AddCategory(List<Category> categories) {
   stdout.write("What is The Category Name ? ");
   String? input = stdin.readLineSync();
+  Category category = Category();
   category.EditCategoryName(input);
   categories.add(category);
   String? s = category.getName();
@@ -143,7 +142,7 @@ void PrintAllCategories(List<Category> categories) {
   });
 }
 
-void MarkAsfinished(List<Category> categories, Task task) {
+void MarkAsfinished(List<Category> categories) {
   bool foundCategory = false;
   bool foundTask = false;
   stdout.write("Which Category ? ");
